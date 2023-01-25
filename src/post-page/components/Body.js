@@ -209,7 +209,7 @@ function Body(props) {
     let stationId, stationName, stationUrl, stationTrains, stationBorough;
     axios
       .get(
-        `https://subway-talks.herokuapp.com/stations/get/stationBy/${statePost.train.toUpperCase()}/${
+        `https://subwaytalksbackend.adaptable.app/stations/get/stationBy/${statePost.train.toUpperCase()}/${
           statePost.station
         }`
       )
@@ -224,7 +224,9 @@ function Body(props) {
         //console.log(stationId);
         // Update the average station ratings
         axios
-          .get(`https://subway-talks.herokuapp.com/posts/get/post/${stationId}`)
+          .get(
+            `https://subwaytalksbackend.adaptable.app/posts/get/post/${stationId}`
+          )
           .then(function (response) {
             //console.log( response.data);
 
@@ -241,7 +243,7 @@ function Body(props) {
 
             axios
               .post(
-                `https://subway-talks.herokuapp.com/stations/update/${stationId}`,
+                `https://subwaytalksbackend.adaptable.app/stations/update/${stationId}`,
                 {
                   name: stationName,
                   url: stationUrl,
@@ -254,21 +256,24 @@ function Body(props) {
               .then(function (response) {
                 // Send the post data to the database
                 axios
-                  .post('https://subway-talks.herokuapp.com/posts/add_post', {
-                    username: statePost.userName,
-                    trainName: statePost.train,
-                    stationName: statePost.station,
-                    title: statePost.title,
-                    body: statePost.bodyContext,
-                    overallRating: statePost.satisfactionLevel,
-                    dangerLevel: statePost.dangerLevel,
-                    numberOfVotes: statePost.numberOfVotes,
-                    numberOfComments: statePost.numberOfComments,
-                    isUp: statePost.isUp,
-                    isDown: statePost.isDown,
-                    comments: statePost.comments,
-                    station_id: stationId,
-                  })
+                  .post(
+                    'https://subwaytalksbackend.adaptable.app/posts/add_post',
+                    {
+                      username: statePost.userName,
+                      trainName: statePost.train,
+                      stationName: statePost.station,
+                      title: statePost.title,
+                      body: statePost.bodyContext,
+                      overallRating: statePost.satisfactionLevel,
+                      dangerLevel: statePost.dangerLevel,
+                      numberOfVotes: statePost.numberOfVotes,
+                      numberOfComments: statePost.numberOfComments,
+                      isUp: statePost.isUp,
+                      isDown: statePost.isDown,
+                      comments: statePost.comments,
+                      station_id: stationId,
+                    }
+                  )
                   .then(function (response) {
                     //console.log(response);
 

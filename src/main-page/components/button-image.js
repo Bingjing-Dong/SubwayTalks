@@ -6,6 +6,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
+import CardActionArea from '@mui/material/CardActionArea';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -22,14 +23,15 @@ function ButtonImage(props) {
   return (
     <ThemeProvider theme={theme}>
       <Card>
-        <CardMedia
-          component="img"
-          cursor="pointer"
-          height={matches ? 300 : 400}
-          image={url}
-          alt="station"
-          onClick={props.handleNavigateToStation}
-        />
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height={matches ? 300 : 400}
+            image={url}
+            alt="station"
+            onClick={props.handleNavigateToStation}
+          />
+        </CardActionArea>
         <CardContent>
           <h2> {name}</h2>
           <h3> 🏙️ {borough}</h3>

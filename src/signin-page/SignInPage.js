@@ -32,7 +32,10 @@ function SignInPage() {
         password: values.password,
       };
       axios
-        .post('https://subway-talks.herokuapp.com/users/findUser', checkUser)
+        .post(
+          'https://subwaytalksbackend.adaptable.app/users/findUser',
+          checkUser
+        )
         .then(function (response) {
           //console.log(response.data);
           alert('Successfully log in to SubwayTalks');

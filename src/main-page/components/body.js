@@ -37,7 +37,7 @@ function Body(props) {
     }
 
     axios
-      .get(`https://subway-talks.herokuapp.com/stations/`)
+      .get(`https://subwaytalksbackend.adaptable.app/stations/`)
       .then(function (response) {
         setStation(
           response.data.map((stationObj) => {
@@ -76,7 +76,7 @@ function Body(props) {
   function handleFilters(filter) {
     setCircular(true);
     axios
-      .get(`https://subway-talks.herokuapp.com/stations/` + filter)
+      .get(`https://subwaytalksbackend.adaptable.app/stations/` + filter)
       .then(function (response) {
         setStation(
           response.data.map((stationObj) => {

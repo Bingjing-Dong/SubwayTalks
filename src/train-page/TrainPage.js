@@ -25,7 +25,9 @@ function TrainPage() {
   // Gather station data from MongoDB
   React.useEffect(() => {
     axios
-      .get(`https://subway-talks.herokuapp.com/stations/get/${station_id}`)
+      .get(
+        `https://subwaytalksbackend.adaptable.app/stations/get/${station_id}`
+      )
       .then(function (response) {
         setStation({
           ...response.data,

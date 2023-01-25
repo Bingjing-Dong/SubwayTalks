@@ -92,14 +92,16 @@ function Body(props) {
     if (props.isLogged) {
       axios
         .get(
-          `https://subway-talks.herokuapp.com/posts/get/post/${props.stationId}`
+          `https://subwaytalksbackend.adaptable.app/posts/get/post/${props.stationId}`
         )
         .then(function (response) {
           const cardData = response.data;
           // Get the posts in which the user has up/down voted
           // and display the changes
           axios
-            .get(`https://subway-talks.herokuapp.com/users/get/${props.userId}`)
+            .get(
+              `https://subwaytalksbackend.adaptable.app/users/get/${props.userId}`
+            )
             .then(function (response) {
               const userVotes = response.data.votes;
 
@@ -126,7 +128,7 @@ function Body(props) {
     } else {
       axios
         .get(
-          `https://subway-talks.herokuapp.com/posts/get/post/${props.stationId}`
+          `https://subwaytalksbackend.adaptable.app/posts/get/post/${props.stationId}`
         )
         .then(function (response) {
           setPostCards(response.data);
@@ -161,7 +163,7 @@ function Body(props) {
     //statePostCards
 
     axios
-      .get(`https://subway-talks.herokuapp.com/users/get/${props.userId}`)
+      .get(`https://subwaytalksbackend.adaptable.app/users/get/${props.userId}`)
       .then(function (response) {
         const tempUsername = response.data.username;
         const tempPassword = response.data.password;
@@ -183,7 +185,7 @@ function Body(props) {
 
         axios
           .post(
-            `https://subway-talks.herokuapp.com/users/update/${props.userId}`,
+            `https://subwaytalksbackend.adaptable.app/users/update/${props.userId}`,
             {
               username: tempUsername,
               password: tempPassword,
@@ -193,7 +195,7 @@ function Body(props) {
           .then(() => {
             statePostCards.map((post) => {
               axios.post(
-                `https://subway-talks.herokuapp.com/posts/update/${post._id}`,
+                `https://subwaytalksbackend.adaptable.app/posts/update/${post._id}`,
                 {
                   ...post,
                   numberOfVotes: post.numberOfVotes,

@@ -32,7 +32,10 @@ function SignUpPage() {
         votes: [],
       };
       axios
-        .post('https://subway-talks.herokuapp.com/users/add_user', newUser)
+        .post(
+          'https://subwaytalksbackend.adaptable.app/users/add_user',
+          newUser
+        )
         .then((response) => {
           alert('Successfully sign up to SubwayTalks');
           navigate(`/main/logged-in-as?${response.data.username}`, {
